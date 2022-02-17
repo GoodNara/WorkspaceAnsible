@@ -1,11 +1,18 @@
 ---
-- name: touch files test
+- name: ping test
   hosts: target
+  #remote_user: root
   tasks:
-  - name: create directory
-    file:
-      path: /home/worker/test
-      state: directory
+  - name: ping test
+    ping:
+
+  - name: touch file test
+    hosts: target
+    tasks:
+    - name: create directory
+      file:
+        path: /home/worker/test
+        state: directory
 
   - name: touch file
     file:
