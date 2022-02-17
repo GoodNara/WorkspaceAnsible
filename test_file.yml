@@ -1,6 +1,7 @@
 ---
 - name: ping test
   hosts: target
+  gather_facts: True
   #remote_user: root
   tasks:
   - name: ping test
@@ -8,6 +9,8 @@
 
 - name: touch file test
   hosts: target
+  remote_user: root
+  gather_facts: false
   tasks:
   - name: create directory
     file:
