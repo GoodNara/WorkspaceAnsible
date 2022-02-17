@@ -1,0 +1,27 @@
+---
+- name: ping test
+  hosts: target   #호스트는 빠지면 안됌
+  gather_facts: True    # default값이라 생략 가능
+  tasks:
+  - name: ping test
+    ping:
+
+- name: touch files test
+  hosts: target
+  remote_user: ansible
+  become: yes
+  gather_facts: False
+  tasks:
+  - name: create directory
+    file:
+      path: /home/worker/test
+      state: directory
+
+
+  - name: touch file
+    file:
+      path: /home/worker/test/test.txt
+      state: touch
+  
+  - name: create file
+    shell: ls -l > /home/worker/test/test.txt

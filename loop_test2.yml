@@ -1,0 +1,13 @@
+---
+# 사전 목록 사용 loop
+- name: loop test
+  hosts: #호스트IP
+  gather_facts: False
+  tasks:
+  -debug:
+      msg: "{{ item.user }} - {{ item.group }}"
+    loop:
+    - user: user1
+      group: group1
+    - user: user2
+      group: group2

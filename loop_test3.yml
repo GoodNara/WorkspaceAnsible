@@ -1,0 +1,19 @@
+---
+# 중첩 목록 사용 loop
+- name: loop test
+  hosts: #호스트 IP
+  gather_facts: False
+  vars:
+    users:
+    - user1
+    - user2
+    - user3
+    dbs:
+    - db1
+    - db2
+    - db3
+  tasks:
+  - debug:
+      msg: "{{ item[0] }} - {{ item[1] }}"
+    loop:
+    - "{{ users | product( dbs ) | list }}"

@@ -1,0 +1,24 @@
+---
+- name: loop test
+  hosts: #호스트IP
+  gather_facts : False 
+  vars:
+    score: 95  # 다른 숫자로 바꿔서도 해볼 것
+  tasks:
+  -name: score is Excellent
+    shell: echo "grade A, excellent!!!"
+    register: grade
+    when: ( score|int >= 90 )
+
+  -name: score is fail
+    shell: echo "grade A, fail..."
+    register: grade
+    when: ( score|int < 60 )
+
+
+    - debug:
+        msg: "{{ grade }}"
+
+ # - name: Shut down CentOS flavored systems
+ #   command: /sbin/shutdown -t now
+ #   when: ansible_facts[ 'distribution' ] == "CentOS"

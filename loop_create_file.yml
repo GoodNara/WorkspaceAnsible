@@ -1,0 +1,25 @@
+---
+- name: loop test
+  hosts: #호스트 IP
+  remote_user" root
+  gather_facts: False
+  vars:
+    file_path: /home/work/touch_file
+  tasks:
+  - name: create directory
+    file:
+      path: "{{ file_path }}"
+      state: directory
+
+  - name: create file
+    file:
+      path: "{{ file_path }}/{{ item }}.txt"
+      state: touch
+    loop:
+    - first
+    - second
+    - third
+    - test1
+    - test2
+    
+    
