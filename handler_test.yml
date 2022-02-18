@@ -5,14 +5,21 @@
     - name: excute ls
       shell: ls
       notify:
-        - stop message taskname=ls
+        - "my handler"
 
     - name: status sshd
       shell: systemctl status sshd
       notify:
-        - stop message taskname=sshd
+        - "my handler"
 
   handlers:
+    - name: echo
+      debug:
+        msg: echo handler message
+      listen: "my handler"
+
     - name: stop message
       debug:
-        msg: "stop {{ taskname }} task"
+        msg: stop message 
+      listen: "my handler"
+       
