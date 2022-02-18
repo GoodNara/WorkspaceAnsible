@@ -1,0 +1,10 @@
+---
+- name: include test
+  hosts: all
+  remote_user: root
+  tasks:
+  - name: include task
+    include: task.ym
+    vars:
+      path: /etc/ansible
+      
