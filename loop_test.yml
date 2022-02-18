@@ -1,6 +1,6 @@
 ---
 - name: loop test
-  hosts: all
+  hosts: 192.168.0.184
   gather_facts: False
   tasks:
   - debug: 
@@ -10,3 +10,14 @@
     - b
     - c
     
+
+  - name: add server user
+    user:
+      name: "{{ item }}"
+      state: present
+      groups: worker
+    loop:
+      - worker1
+      - worker2
+      - worker3
+      
