@@ -13,11 +13,10 @@
 
   - name: add server user
     user:
-      name: "{{ item }}"
+      name: "{{ item.name }}"
       state: present
-      groups: worker
+      groups: "{{ item.group }}"
     loop:
-      - worker1
-      - worker2
-      - worker3
-      
+      - { name: "worker1", group: "worker" }
+      - { name: "worker2", group: "worker" }
+      - { name: "worker3", group: "ansible" }
